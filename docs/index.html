@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>py</title>
+    <script type="module" crossorigin src="./assets/index-y6osgSWB.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-D2MJg03u.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-Blw4afVn.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-DGjKht0c.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-JieDVWC_.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-CU2C3Vxx.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-BLne0bXb.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DXARUlxo.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-BZwMGX81.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-XrBBnd7s.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-DYvqRARy.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-CwbVR_sO.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-COIw2x9i.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-k58KVlT-.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-Dtw5N98_.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-sZgjGm4S.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-w-Qo9n0R.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-B-sKate2.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-Bv2rCglF.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-BwwUWhww.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DmqhBBs6.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-BDYuj3zG.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-CkiqGLcK.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-ODovYgPQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-BOaDhCTH.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-8btzWeZg.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-DxQeE5uh.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-DXdzqzcr.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-BLWK1eKa.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-tOPFFcLZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-DdnWW30b.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DoZCLcOb.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-9-v2bhoi.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-N3bfh_O1.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-CbdaHKzX.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-DCDmxPD0.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DAC2orgH.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-pfr2N700.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-hq2TLzOp.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-BmGdj50E.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-CYlwteGD.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-BzSgteR-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-VwkX7yeV.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BNTOYRCs.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DZJfxwLb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CxquLoAZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dnlw22ji.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-4lB-oR9j.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BvlMLwcr.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CgYlATe-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BPkOpnKv.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-jWatZkll.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-BGIVWsZ9.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-BFDc-_i_.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-D5tzp-Y6.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/toNumber-BvwE1TMv.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-DNX1lT2d.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-BbSyBDA8.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-BxfYZ6ML.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-BNL5rxQw.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BqYYXi6G.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-CxTq44MI.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-BUtlbGdu.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-CeM6oPsT.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-C2mTH3GM.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-H-hXtEOq.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-LVL1r3-M.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers--nDjbAPa.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-D3zWcDme.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-DGqo1TbK.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-wQU1z0W_.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-BXMIcLWP.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DNCT6U6R.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-hsPVDTG-.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-CRkrHl-y.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-MSuUqmbC.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DF3HbVtk.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-CgvDWFE3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-DrHAuMTb.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-DOybeRem.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-DFYAOTWd.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-Bizk-4hH.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-DFMsQ6MJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-Ci08KCdY.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-CM3WMmA8.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-COFRe84u.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-DPomuurt.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-B79Qf6ma.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-Bmp8DLLo.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-C5wIpWgQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-DGqJ93hW.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-DzMo6UAI.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-aCoWDe-l.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CsrwfW0n.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-DzSMahmM.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-Cyc7d5AB.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-DNANigO8.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-DnzBp4l4.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-AtoFZ7i4.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-CZb6hI2x.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-5XbM3TL_.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-B03CpBmt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-C8jvQ1Lj.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-frvr6JXK.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-BQHP_yQk.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-JRtp5zfw.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-U-UFA9KI.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-stqTIkXD.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-B4xARV9R.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-Co37_JfG.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-DYxi7n2b.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-BEz9SEXo.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-BUYTQ32a.js">
+    <link rel="modulepreload" crossorigin href="./assets/toFinite-2vTWYoIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-D-0CV4c0.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-qC3alE1r.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-DidENKDy.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-DiHwtSG8.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-BUNcfKXO.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-CavtrueA.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-CsXoiEZx.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-BecUoMho.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-DqqZbNbU.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-vertical-DEH0lwkn.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-CiOe0azG.js">
+    <link rel="modulepreload" crossorigin href="./assets/components-DKHyHZBv.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-AfcgbFG_.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-DlzgV4KY.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-XObNWtN8.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-B6yUY_RG.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-smPWkHxB.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-BqofWdD5.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-DgRJ-xBZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-BYq_Btg-.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-CI_b818F.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-5_PGMxRL.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-l37OnSN4.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-BgkzrnsX.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-Bj5YoM7H.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-YkPg_CVc.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-Qeh-bHlj.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-Bu6OEURn.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-0LPgOyiW.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-CTort_or.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-BwAF2XN5.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-D7jeR2wg.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-49dbm-yb.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-D1n-olwf.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-C89F4v17.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-CS2o3y4W.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-CfYqAbmq.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DunI72kV.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-BJ6VFU8l.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-DrDh2657.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-DaQqUJ5I.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-DzigvqmT.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-Dk1Mb_so.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-D0WTlCXt.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-BteCqkNg.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-D7Ur9Qxq.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-BFRDxSKF.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-ISEb5HNL.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DafhTYio.js">
+    <link rel="modulepreload" crossorigin href="./assets/_basePickBy-C0EPK3Lm.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-neNJUP_8.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-DxxzgVgU.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-COtNnHUC.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-DJ8dAd4j.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-BIoPrMH_.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CKRn_SiB.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.11%22%0A%23%20dependencies%20%3D%20%5B%0A%23%20%20%20%20%20%22marimo%22%2C%0A%23%20%20%20%20%20%22pandas%22%2C%0A%23%20%20%20%20%20%22plotly%22%2C%0A%23%20%20%20%20%20%22numpy%22%2C%0A%23%20%5D%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.23.1%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20import%20plotly.express%20as%20px%0A%20%20%20%20import%20plotly.graph_objects%20as%20go%0A%20%20%20%20import%20numpy%20as%20np%0A%0A%20%20%20%20return%20mo%2C%20pd%2C%20px%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20%23%20Tab%201%3A%20About%20Me%20-%20Artur%20Churaba%20Portfolio%0A%20%20%20%20tab_about%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%20%20%20%20%23%20Artur%20Churaba%0A%0A%20%20%20%20%20%20%20%20%23%23%23%20BSc%20Accounting%20%26%20Finance%20%7C%20Bayes%20Business%20School%0A%0A%20%20%20%20%20%20%20%20---%0A%0A%20%20%20%20%20%20%20%20%23%23%20%F0%9F%91%8B%20About%20Me%0A%0A%20%20%20%20%20%20%20%20I%20work%20with%20datasets%20and%20visualize%20them%20to%20make%20it%20easier%20and%20more%20clear%20to%20read.%20This%20portfolio%20demonstrates%20my%20ability%20to%20work%20with%20data%2C%20build%20interactive%20tools%2C%20and%20present%20findings%20effectively.%0A%0A%20%20%20%20%20%20%20%20%23%23%20%F0%9F%8E%93%20Education%0A%0A%20%20%20%20%20%20%20%20**BSc%20Accounting%20%26%20Finance**%20%7C%20Bayes%20Business%20School%20(2025%20%E2%80%93%20Present)%0A%20%20%20%20%20%20%20%20-%20Introduction%20to%20Data%20Science%20and%20AI%20Tools%0A%20%20%20%20%20%20%20%20-%20Financial%20Accounting%0A%0A%20%20%20%20%20%20%20%20%23%23%20%F0%9F%9B%A0%EF%B8%8F%20Technical%20Skills%0A%0A%20%20%20%20%20%20%20%20%23%23%23%20Programming%20%26%20Data%20Analysis%0A%20%20%20%20%20%20%20%20-%20**Python**%20(Pandas%2C%20NumPy%2C%20Plotly%2C%20Marimo)%20%E2%80%94%20Data%20manipulation%20and%20visualization%0A%20%20%20%20%20%20%20%20-%20**Interactive%20Dashboards**%20%E2%80%94%20Building%20dynamic%2C%20filterable%20web%20apps%0A%20%20%20%20%20%20%20%20-%20**Data%20Filtering%20%26%20UI%20Controls**%20%E2%80%94%20Dropdowns%2C%20sliders%2C%20and%20interactive%20tables%0A%0A%20%20%20%20%20%20%20%20%23%23%23%20Financial%20Analysis%0A%20%20%20%20%20%20%20%20-%20**Altman%20Z-Score%20Modelling**%20%E2%80%94%20Bankruptcy%20risk%20prediction%0A%20%20%20%20%20%20%20%20-%20**Financial%20Data%20Interpretation**%20%E2%80%94%20Analyzing%20S%26P%20500%20company%20metrics%0A%20%20%20%20%20%20%20%20-%20**Cost%20of%20Debt%20Analysis**%20%E2%80%94%20Understanding%20credit%20risk%20impact%20on%20borrowing%20costs%0A%20%20%20%20%20%20%20%20-%20**Panel%20Data%20Analysis**%20%E2%80%94%20Multi-year%20trends%20(2020-2024)%0A%0A%20%20%20%20%20%20%20%20%23%23%23%20Tools%20%26%20Technologies%0A%20%20%20%20%20%20%20%20-%20**Version%20Control**%20%E2%80%94%20Git%2C%20GitHub%20Codespaces%0A%20%20%20%20%20%20%20%20-%20**Data%20Visualization**%20%E2%80%94%20Plotly%2C%20Marimo%20UI%20components%0A%20%20%20%20%20%20%20%20-%20**Data%20Processing**%20%E2%80%94%20Pandas%2C%20NumPy%0A%0A%20%20%20%20%20%20%20%20%23%23%20%F0%9F%93%8A%20What%20This%20Portfolio%20Shows%0A%0A%20%20%20%20%20%20%20%20-%20**Data-Driven%20Risk%20%26%20Cost%20Analysis**%20%E2%80%94%20Z-Score%20vs%20Cost%20of%20Debt%20relationships%0A%20%20%20%20%20%20%20%20-%20**Interactive%20Filtering**%20%E2%80%94%20Filter%20by%20sector%20and%20market%20cap%0A%20%20%20%20%20%20%20%20-%20**S%26P%20500%20Analysis**%20%E2%80%94%20Real%20company%20financial%20data%0A%20%20%20%20%20%20%20%20-%20**Global%20HQ%20Mapping**%20%E2%80%94%20Geographic%20distribution%20of%20company%20headquarters%0A%20%20%20%20%20%20%20%20-%20**Panel%20Data%20Trends**%20%E2%80%94%20Multi-year%20financial%20analysis%20(2020-2024)%0A%0A%20%20%20%20%20%20%20%20---%0A%20%20%20%20%20%20%20%20*This%20portfolio%20demonstrates%20my%20data%20science%20and%20financial%20analysis%20capabilities.*%0A%20%20%20%20%20%20%20%20%22%22%22)%0A%20%20%20%20%5D)%0A%20%20%20%20return%20(tab_about%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20pd)%3A%0A%20%20%20%20%23%20Tab%202%3A%20S%26P%20500%20Z-Score%20vs%20Cost%20of%20Debt%20Analysis%0A%0A%20%20%20%20%23%20Sector%20colors%20for%20consistent%20visualization%0A%20%20%20%20sector_colors%20%3D%20%7B%0A%20%20%20%20%20%20%20%20'consumer-cyclical'%3A%20'%233498db'%2C%0A%20%20%20%20%20%20%20%20'energy'%3A%20'%23e67e22'%2C%0A%20%20%20%20%20%20%20%20'communication-services'%3A%20'%2327ae60'%2C%0A%20%20%20%20%20%20%20%20'basic-materials'%3A%20'%23e74c3c'%2C%0A%20%20%20%20%20%20%20%20'healthcare'%3A%20'%239b59b6'%2C%0A%20%20%20%20%20%20%20%20'technology'%3A%20'%231abc9c'%2C%0A%20%20%20%20%20%20%20%20'industrials'%3A%20'%23f39c12'%2C%0A%20%20%20%20%20%20%20%20'financials'%3A%20'%232980b9'%2C%0A%20%20%20%20%7D%0A%0A%20%20%20%20%23%20S%26P%20500%20sample%20data%0A%20%20%20%20sp500_data%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'AAPL'%2C%20'name'%3A%20'Apple%20Inc.'%2C%20'sector'%3A%20'technology'%2C%20'zscore'%3A%2014.2%2C%20'cod'%3A%201.0%2C%20'mktcap'%3A%202380%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'MSFT'%2C%20'name'%3A%20'Microsoft%20Corp.'%2C%20'sector'%3A%20'technology'%2C%20'zscore'%3A%2016.8%2C%20'cod'%3A%200.9%2C%20'mktcap'%3A%201790%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'GOOGL'%2C%20'name'%3A%20'Alphabet%20Inc.'%2C%20'sector'%3A%20'communication-services'%2C%20'zscore'%3A%2018.4%2C%20'cod'%3A%200.6%2C%20'mktcap'%3A%201140%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'AMZN'%2C%20'name'%3A%20'Amazon.com%20Inc.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%203.8%2C%20'cod'%3A%202.1%2C%20'mktcap'%3A%20860%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'NVDA'%2C%20'name'%3A%20'NVIDIA%20Corp.'%2C%20'sector'%3A%20'technology'%2C%20'zscore'%3A%2019.3%2C%20'cod'%3A%200.8%2C%20'mktcap'%3A%20360%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'META'%2C%20'name'%3A%20'Meta%20Platforms%20Inc.'%2C%20'sector'%3A%20'communication-services'%2C%20'zscore'%3A%2014.7%2C%20'cod'%3A%200.7%2C%20'mktcap'%3A%20319%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'UNH'%2C%20'name'%3A%20'UnitedHealth%20Group%20Inc.'%2C%20'sector'%3A%20'healthcare'%2C%20'zscore'%3A%204.6%2C%20'cod'%3A%201.8%2C%20'mktcap'%3A%20489%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'JNJ'%2C%20'name'%3A%20'Johnson%20%26%20Johnson'%2C%20'sector'%3A%20'healthcare'%2C%20'zscore'%3A%205.9%2C%20'cod'%3A%201.4%2C%20'mktcap'%3A%20434%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'V'%2C%20'name'%3A%20'Visa%20Inc.'%2C%20'sector'%3A%20'financials'%2C%20'zscore'%3A%2013.5%2C%20'cod'%3A%200.9%2C%20'mktcap'%3A%20437%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'XOM'%2C%20'name'%3A%20'Exxon%20Mobil%20Corp.'%2C%20'sector'%3A%20'energy'%2C%20'zscore'%3A%202.4%2C%20'cod'%3A%203.1%2C%20'mktcap'%3A%20443%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'JPM'%2C%20'name'%3A%20'JPMorgan%20Chase%20%26%20Co.'%2C%20'sector'%3A%20'financials'%2C%20'zscore'%3A%201.8%2C%20'cod'%3A%202.7%2C%20'mktcap'%3A%20399%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'WMT'%2C%20'name'%3A%20'Walmart%20Inc.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%203.2%2C%20'cod'%3A%202.3%2C%20'mktcap'%3A%20386%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'PG'%2C%20'name'%3A%20'Procter%20%26%20Gamble%20Co.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%203.5%2C%20'cod'%3A%202.1%2C%20'mktcap'%3A%20356%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'CVX'%2C%20'name'%3A%20'Chevron%20Corp.'%2C%20'sector'%3A%20'energy'%2C%20'zscore'%3A%202.6%2C%20'cod'%3A%202.9%2C%20'mktcap'%3A%20340%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'HD'%2C%20'name'%3A%20'Home%20Depot%20Inc.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%202.0%2C%20'cod'%3A%203.4%2C%20'mktcap'%3A%20298%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'KO'%2C%20'name'%3A%20'Coca-Cola%20Co.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%202.5%2C%20'cod'%3A%202.8%2C%20'mktcap'%3A%20268%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'PEP'%2C%20'name'%3A%20'PepsiCo%20Inc.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%203.0%2C%20'cod'%3A%202.6%2C%20'mktcap'%3A%20244%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'TXN'%2C%20'name'%3A%20'Texas%20Instruments%20Inc.'%2C%20'sector'%3A%20'technology'%2C%20'zscore'%3A%207.4%2C%20'cod'%3A%201.5%2C%20'mktcap'%3A%20163%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'NFLX'%2C%20'name'%3A%20'Netflix%20Inc.'%2C%20'sector'%3A%20'communication-services'%2C%20'zscore'%3A%203.6%2C%20'cod'%3A%202.3%2C%20'mktcap'%3A%20123%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'INTC'%2C%20'name'%3A%20'Intel%20Corp.'%2C%20'sector'%3A%20'technology'%2C%20'zscore'%3A%204.5%2C%20'cod'%3A%202.0%2C%20'mktcap'%3A%20116%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'CSCO'%2C%20'name'%3A%20'Cisco%20Systems%20Inc.'%2C%20'sector'%3A%20'technology'%2C%20'zscore'%3A%209.1%2C%20'cod'%3A%201.3%2C%20'mktcap'%3A%20195%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'DIS'%2C%20'name'%3A%20'Walt%20Disney%20Co.'%2C%20'sector'%3A%20'communication-services'%2C%20'zscore'%3A%201.9%2C%20'cod'%3A%203.5%2C%20'mktcap'%3A%20181%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'VZ'%2C%20'name'%3A%20'Verizon%20Communications%20Inc.'%2C%20'sector'%3A%20'communication-services'%2C%20'zscore'%3A%201.4%2C%20'cod'%3A%204.2%2C%20'mktcap'%3A%20170%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'WFC'%2C%20'name'%3A%20'Wells%20Fargo%20%26%20Co.'%2C%20'sector'%3A%20'financials'%2C%20'zscore'%3A%201.6%2C%20'cod'%3A%203.0%2C%20'mktcap'%3A%20172%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'GS'%2C%20'name'%3A%20'Goldman%20Sachs%20Group%20Inc.'%2C%20'sector'%3A%20'financials'%2C%20'zscore'%3A%201.7%2C%20'cod'%3A%203.2%2C%20'mktcap'%3A%20123%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'CAT'%2C%20'name'%3A%20'Caterpillar%20Inc.'%2C%20'sector'%3A%20'industrials'%2C%20'zscore'%3A%203.2%2C%20'cod'%3A%202.4%2C%20'mktcap'%3A%20118%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'GE'%2C%20'name'%3A%20'General%20Electric%20Co.'%2C%20'sector'%3A%20'industrials'%2C%20'zscore'%3A%201.6%2C%20'cod'%3A%203.9%2C%20'mktcap'%3A%2094%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'PFE'%2C%20'name'%3A%20'Pfizer%20Inc.'%2C%20'sector'%3A%20'healthcare'%2C%20'zscore'%3A%204.2%2C%20'cod'%3A%201.8%2C%20'mktcap'%3A%20276%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'MRK'%2C%20'name'%3A%20'Merck%20%26%20Co.%20Inc.'%2C%20'sector'%3A%20'healthcare'%2C%20'zscore'%3A%203.3%2C%20'cod'%3A%202.2%2C%20'mktcap'%3A%20275%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'MCD'%2C%20'name'%3A%20%22McDonald's%20Corp.%22%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%201.2%2C%20'cod'%3A%204.3%2C%20'mktcap'%3A%20207%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'SBUX'%2C%20'name'%3A%20'Starbucks%20Corp.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%201.5%2C%20'cod'%3A%204.1%2C%20'mktcap'%3A%20104%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'NKE'%2C%20'name'%3A%20'Nike%20Inc.'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'zscore'%3A%206.2%2C%20'cod'%3A%201.6%2C%20'mktcap'%3A%20167%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'LIN'%2C%20'name'%3A%20'Linde%20PLC'%2C%20'sector'%3A%20'basic-materials'%2C%20'zscore'%3A%204.1%2C%20'cod'%3A%201.9%2C%20'mktcap'%3A%20153%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'MA'%2C%20'name'%3A%20'Mastercard%20Inc.'%2C%20'sector'%3A%20'financials'%2C%20'zscore'%3A%2011.2%2C%20'cod'%3A%201.0%2C%20'mktcap'%3A%20339%7D%2C%0A%20%20%20%20%20%20%20%20%7B'ticker'%3A%20'ORCL'%2C%20'name'%3A%20'Oracle%20Corp.'%2C%20'sector'%3A%20'technology'%2C%20'zscore'%3A%202.1%2C%20'cod'%3A%203.6%2C%20'mktcap'%3A%20216%7D%2C%0A%20%20%20%20%5D%0A%0A%20%20%20%20df_sp500%20%3D%20pd.DataFrame(sp500_data)%0A%0A%20%20%20%20%23%20Add%20risk%20category%20based%20on%20Z-Score%0A%20%20%20%20df_sp500%5B'risk_category'%5D%20%3D%20df_sp500%5B'zscore'%5D.apply(%0A%20%20%20%20%20%20%20%20lambda%20x%3A%20'High%20Risk%20(Distress)'%20if%20x%20%3C%201.81%20else%20('Medium%20Risk%20(Grey)'%20if%20x%20%3C%3D%202.99%20else%20'Low%20Risk%20(Safe)')%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Get%20unique%20sectors%20for%20filter%0A%20%20%20%20sectors%20%3D%20%5B'All'%5D%20%2B%20sorted(df_sp500%5B'sector'%5D.unique().tolist())%0A%0A%20%20%20%20%23%20Create%20UI%20filters%0A%20%20%20%20sector_filter%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3Dsectors%2C%0A%20%20%20%20%20%20%20%20value%3D'All'%2C%0A%20%20%20%20%20%20%20%20label%3D%22Filter%20by%20Sector%22%0A%20%20%20%20)%0A%0A%20%20%20%20mktcap_slider%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D0%2C%0A%20%20%20%20%20%20%20%20stop%3D2500%2C%0A%20%20%20%20%20%20%20%20step%3D50%2C%0A%20%20%20%20%20%20%20%20value%3D0%2C%0A%20%20%20%20%20%20%20%20label%3D%22Minimum%20Market%20Cap%20(%24B)%22%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Summary%20by%20risk%20category%0A%20%20%20%20risk_summary%20%3D%20df_sp500.groupby('risk_category').agg(%7B%0A%20%20%20%20%20%20%20%20'ticker'%3A%20'count'%2C%0A%20%20%20%20%20%20%20%20'cod'%3A%20'mean'%2C%0A%20%20%20%20%20%20%20%20'zscore'%3A%20'mean'%2C%0A%20%20%20%20%20%20%20%20'mktcap'%3A%20'mean'%0A%20%20%20%20%7D).round(2).reset_index()%0A%20%20%20%20risk_summary.columns%20%3D%20%5B'Risk%20Category'%2C%20'Number%20of%20Companies'%2C%20'Avg%20Cost%20of%20Debt%20(%25)'%2C%20'Avg%20Z-Score'%2C%20'Avg%20Market%20Cap%20(%24B)'%5D%0A%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20df_sp500%2C%0A%20%20%20%20%20%20%20%20mktcap_slider%2C%0A%20%20%20%20%20%20%20%20risk_summary%2C%0A%20%20%20%20%20%20%20%20sector_colors%2C%0A%20%20%20%20%20%20%20%20sector_filter%2C%0A%20%20%20%20%20%20%20%20sp500_data%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell%0Adef%20_(df_sp500%2C%20mktcap_slider%2C%20px%2C%20sector_colors%2C%20sector_filter)%3A%0A%20%20%20%20%23%20Cell%203%3A%20Filtered%20data%20and%20visualizations%0A%0A%20%20%20%20%23%20Filter%20data%20based%20on%20UI%20selections%0A%20%20%20%20def%20get_filtered_data()%3A%0A%20%20%20%20%20%20%20%20filtered%20%3D%20df_sp500.copy()%0A%0A%20%20%20%20%20%20%20%20%23%20Filter%20by%20sector%0A%20%20%20%20%20%20%20%20if%20sector_filter.value%20!%3D%20'All'%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20filtered%20%3D%20filtered%5Bfiltered%5B'sector'%5D%20%3D%3D%20sector_filter.value%5D%0A%0A%20%20%20%20%20%20%20%20%23%20Filter%20by%20market%20cap%0A%20%20%20%20%20%20%20%20filtered%20%3D%20filtered%5Bfiltered%5B'mktcap'%5D%20%3E%3D%20mktcap_slider.value%5D%0A%0A%20%20%20%20%20%20%20%20return%20filtered%0A%0A%20%20%20%20filtered_df%20%3D%20get_filtered_data()%0A%0A%20%20%20%20%23%20Z-Score%20vs%20Cost%20of%20Debt%20Scatter%20Plot%0A%20%20%20%20fig_scatter%20%3D%20px.scatter(%0A%20%20%20%20%20%20%20%20filtered_df%2C%0A%20%20%20%20%20%20%20%20x%3D'zscore'%2C%0A%20%20%20%20%20%20%20%20y%3D'cod'%2C%0A%20%20%20%20%20%20%20%20color%3D'sector'%2C%0A%20%20%20%20%20%20%20%20size%3D'mktcap'%2C%0A%20%20%20%20%20%20%20%20hover_name%3D'ticker'%2C%0A%20%20%20%20%20%20%20%20text%3D'ticker'%2C%0A%20%20%20%20%20%20%20%20title%3D'Cost%20of%20Debt%20vs.%20Altman%20Z-Score%20(S%26P%20500%2C%202022)'%2C%0A%20%20%20%20%20%20%20%20labels%3D%7B'zscore'%3A%20'Altman%20Z-Score'%2C%20'cod'%3A%20'Cost%20of%20Debt%20(%25)'%2C%20'sector'%3A%20'Sector'%7D%2C%0A%20%20%20%20%20%20%20%20color_discrete_map%3Dsector_colors%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Add%20threshold%20lines%0A%20%20%20%20fig_scatter.add_vline(x%3D1.81%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22red%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20annotation_text%3D%22Distress%20(Z%20%3C%201.81)%22)%0A%20%20%20%20fig_scatter.add_vline(x%3D2.99%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22green%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20annotation_text%3D%22Safe%20(Z%20%3E%202.99)%22)%0A%0A%20%20%20%20fig_scatter.update_traces(textposition%3D'top%20center'%2C%20textfont_size%3D9)%0A%0A%20%20%20%20%23%20Bar%20chart%3A%20Avg%20Cost%20of%20Debt%20by%20Sector%0A%20%20%20%20avg_by_sector%20%3D%20filtered_df.groupby('sector')%5B'cod'%5D.mean().reset_index()%0A%20%20%20%20fig_bar%20%3D%20px.bar(%0A%20%20%20%20%20%20%20%20avg_by_sector%2C%0A%20%20%20%20%20%20%20%20x%3D'sector'%2C%0A%20%20%20%20%20%20%20%20y%3D'cod'%2C%0A%20%20%20%20%20%20%20%20color%3D'sector'%2C%0A%20%20%20%20%20%20%20%20title%3D'Average%20Cost%20of%20Debt%20by%20Sector'%2C%0A%20%20%20%20%20%20%20%20labels%3D%7B'sector'%3A%20'Sector'%2C%20'cod'%3A%20'Avg%20Cost%20of%20Debt%20(%25)'%7D%2C%0A%20%20%20%20%20%20%20%20color_discrete_map%3Dsector_colors%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Histogram%3A%20Z-Score%20Distribution%0A%20%20%20%20fig_hist%20%3D%20px.histogram(%0A%20%20%20%20%20%20%20%20filtered_df%2C%0A%20%20%20%20%20%20%20%20x%3D'zscore'%2C%0A%20%20%20%20%20%20%20%20nbins%3D20%2C%0A%20%20%20%20%20%20%20%20title%3D'Altman%20Z-Score%20Distribution'%2C%0A%20%20%20%20%20%20%20%20labels%3D%7B'zscore'%3A%20'Z-Score'%2C%20'count'%3A%20'Number%20of%20Companies'%7D%2C%0A%20%20%20%20%20%20%20%20color_discrete_sequence%3D%5B'%231e3d6e'%5D%0A%20%20%20%20)%0A%20%20%20%20fig_hist.add_vline(x%3D1.81%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22red%22)%0A%20%20%20%20fig_hist.add_vline(x%3D2.99%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22green%22)%0A%0A%20%20%20%20return%20fig_bar%2C%20fig_hist%2C%20fig_scatter%2C%20filtered_df%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20fig_bar%2C%0A%20%20%20%20fig_hist%2C%0A%20%20%20%20fig_scatter%2C%0A%20%20%20%20filtered_df%2C%0A%20%20%20%20mktcap_slider%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20risk_summary%2C%0A%20%20%20%20sector_filter%2C%0A)%3A%0A%20%20%20%20%23%20Cell%204%3A%20Dashboard%20layout%0A%0A%20%20%20%20%23%20Create%20data%20table%0A%20%20%20%20data_table%20%3D%20mo.ui.table(%0A%20%20%20%20%20%20%20%20filtered_df%5B%5B'ticker'%2C%20'name'%2C%20'sector'%2C%20'zscore'%2C%20'cod'%2C%20'mktcap'%2C%20'risk_category'%5D%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22S%26P%20500%20Company%20Data%22%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Calculate%20filtered%20stats%20safely%0A%20%20%20%20high_risk_df%20%3D%20filtered_df%5Bfiltered_df%5B'risk_category'%5D%20%3D%3D%20'High%20Risk%20(Distress)'%5D%0A%20%20%20%20low_risk_df%20%3D%20filtered_df%5Bfiltered_df%5B'risk_category'%5D%20%3D%3D%20'Low%20Risk%20(Safe)'%5D%0A%0A%20%20%20%20high_risk_avg%20%3D%20high_risk_df%5B'cod'%5D.mean()%20if%20len(high_risk_df)%20%3E%200%20else%20'N%2FA'%0A%20%20%20%20low_risk_avg%20%3D%20low_risk_df%5B'cod'%5D.mean()%20if%20len(low_risk_df)%20%3E%200%20else%20'N%2FA'%0A%0A%20%20%20%20tab_dashboard%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%20%F0%9F%93%8A%20Data-Driven%20Risk%20%26%20Cost%20Analysis%20Dashboard%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22Use%20the%20filters%20to%20adjust%20sector%20selection%20and%20minimum%20market%20cap.%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22---%22)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%94%A7%20Filters%22)%2C%0A%20%20%20%20%20%20%20%20mo.hstack(%5Bsector_filter%2C%20mktcap_slider%5D%2C%20justify%3D%22start%22%2C%20gap%3D2)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%88%20Cost%20of%20Debt%20vs.%20Altman%20Z-Score%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_scatter)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%8A%20Average%20Cost%20of%20Debt%20by%20Sector%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_bar)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%89%20Z-Score%20Distribution%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_hist)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%23%20%F0%9F%93%90%20Key%20Statistical%20Insights%0A%0A%20%20%20%20%20%20%20%20%7C%20Metric%20%7C%20Value%20%7C%20Interpretation%20%7C%0A%20%20%20%20%20%20%20%20%7C--------%7C-------%7C----------------%7C%0A%20%20%20%20%20%20%20%20%7C%20**Correlation**%20%7C%20%7Bfiltered_df%5B'zscore'%5D.corr(filtered_df%5B'cod'%5D)%3A.2f%7D%20%7C%20Negative%20correlation%20%7C%0A%20%20%20%20%20%20%20%20%7C%20**Avg%20Cost%20of%20Debt%20(High%20Risk)**%20%7C%20%7Bhigh_risk_avg%7D%25%20%7C%20Higher%20borrowing%20costs%20%7C%0A%20%20%20%20%20%20%20%20%7C%20**Avg%20Cost%20of%20Debt%20(Low%20Risk)**%20%7C%20%7Blow_risk_avg%7D%25%20%7C%20Lower%20borrowing%20costs%20%7C%0A%0A%20%20%20%20%20%20%20%20%23%23%23%20%F0%9F%8F%A2%20Risk%20Category%20Summary%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%0A%20%20%20%20%20%20%20%20mo.ui.table(risk_summary)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%8B%20Full%20Dataset%22)%2C%0A%20%20%20%20%20%20%20%20data_table%2C%0A%20%20%20%20%5D)%0A%0A%20%20%20%20return%20(tab_dashboard%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20pd%2C%20px)%3A%0A%20%20%20%20%23%20Tab%203%3A%20HQ%20Geography%20-%20S%26P%20500%20Company%20Locations%0A%0A%20%20%20%20sector_colors_map%20%3D%20%7B%0A%20%20%20%20%20%20%20%20'financials'%3A%20'%233498db'%2C%0A%20%20%20%20%20%20%20%20'technology'%3A%20'%231abc9c'%2C%0A%20%20%20%20%20%20%20%20'consumer-cyclical'%3A%20'%23e74c3c'%2C%0A%20%20%20%20%20%20%20%20'communication-services'%3A%20'%2327ae60'%2C%0A%20%20%20%20%20%20%20%20'healthcare'%3A%20'%239b59b6'%2C%0A%20%20%20%20%20%20%20%20'industrials'%3A%20'%23f39c12'%2C%0A%20%20%20%20%20%20%20%20'energy'%3A%20'%23e67e22'%2C%0A%20%20%20%20%20%20%20%20'basic-materials'%3A%20'%23e74c3c'%2C%0A%20%20%20%20%7D%0A%0A%20%20%20%20%23%20HQ%20Location%20Data%0A%20%20%20%20hq_locations%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'New%20York'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'financials'%2C%20'lat'%3A%2040.71%2C%20'lng'%3A%20-74.01%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'JPMorgan%20Chase'%2C%20'Goldman%20Sachs'%2C%20'Mastercard'%2C%20'Visa'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Cupertino'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'technology'%2C%20'lat'%3A%2037.32%2C%20'lng'%3A%20-122.03%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Apple%20Inc.'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Redmond'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'technology'%2C%20'lat'%3A%2047.67%2C%20'lng'%3A%20-122.12%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Microsoft'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Seattle'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'lat'%3A%2047.60%2C%20'lng'%3A%20-122.33%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Amazon'%2C%20'Starbucks'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Menlo%20Park'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'communication-services'%2C%20'lat'%3A%2037.45%2C%20'lng'%3A%20-122.18%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Meta%20Platforms'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Mountain%20View'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'communication-services'%2C%20'lat'%3A%2037.39%2C%20'lng'%3A%20-122.08%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Google'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Santa%20Clara'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'technology'%2C%20'lat'%3A%2037.35%2C%20'lng'%3A%20-121.96%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'NVIDIA'%2C%20'Intel'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Chicago'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'industrials'%2C%20'lat'%3A%2041.85%2C%20'lng'%3A%20-87.65%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Boeing'%2C%20'McDonalds'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Houston'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'energy'%2C%20'lat'%3A%2029.76%2C%20'lng'%3A%20-95.37%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'ExxonMobil'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Atlanta'%2C%20'country'%3A%20'USA'%2C%20'sector'%3A%20'consumer-cyclical'%2C%20'lat'%3A%2033.74%2C%20'lng'%3A%20-84.38%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Coca-Cola'%2C%20'Home%20Depot'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'London'%2C%20'country'%3A%20'UK'%2C%20'sector'%3A%20'basic-materials'%2C%20'lat'%3A%2051.50%2C%20'lng'%3A%20-0.12%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Linde%20PLC'%5D%7D%2C%0A%20%20%20%20%20%20%20%20%7B'city'%3A%20'Tokyo'%2C%20'country'%3A%20'Japan'%2C%20'sector'%3A%20'technology'%2C%20'lat'%3A%2035.68%2C%20'lng'%3A%20139.69%2C%20%0A%20%20%20%20%20%20%20%20%20'companies'%3A%20%5B'Sony'%2C%20'Toyota'%5D%7D%2C%0A%20%20%20%20%5D%0A%0A%20%20%20%20df_locations%20%3D%20pd.DataFrame(hq_locations)%0A%0A%20%20%20%20%23%20Create%20map%20figure%0A%20%20%20%20fig_map%20%3D%20px.scatter_mapbox(%0A%20%20%20%20%20%20%20%20df_locations%2C%0A%20%20%20%20%20%20%20%20lat%3D'lat'%2C%0A%20%20%20%20%20%20%20%20lon%3D'lng'%2C%0A%20%20%20%20%20%20%20%20color%3D'sector'%2C%0A%20%20%20%20%20%20%20%20size%3D%5Blen(loc%5B'companies'%5D)%20for%20loc%20in%20hq_locations%5D%2C%0A%20%20%20%20%20%20%20%20hover_name%3D'city'%2C%0A%20%20%20%20%20%20%20%20hover_data%3D%7B'country'%3A%20True%2C%20'sector'%3A%20True%2C%20'companies'%3A%20True%7D%2C%0A%20%20%20%20%20%20%20%20title%3D%22S%26P%20500%20Company%20Headquarters%20Locations%22%2C%0A%20%20%20%20%20%20%20%20color_discrete_map%3Dsector_colors_map%2C%0A%20%20%20%20%20%20%20%20zoom%3D1%2C%0A%20%20%20%20%20%20%20%20height%3D500%2C%0A%20%20%20%20%20%20%20%20size_max%3D25%0A%20%20%20%20)%0A%0A%20%20%20%20fig_map.update_layout(mapbox_style%3D%22carto-positron%22)%0A%20%20%20%20fig_map.update_layout(margin%3Ddict(l%3D0%2C%20r%3D0%2C%20t%3D50%2C%20b%3D0))%0A%0A%20%20%20%20total_cities%20%3D%20len(df_locations)%0A%20%20%20%20total_companies%20%3D%20sum(%5Blen(loc%5B'companies'%5D)%20for%20loc%20in%20hq_locations%5D)%0A%20%20%20%20unique_sectors%20%3D%20df_locations%5B'sector'%5D.nunique()%0A%20%20%20%20unique_countries%20%3D%20df_locations%5B'country'%5D.nunique()%0A%0A%20%20%20%20%23%20Create%20location%20table%0A%20%20%20%20location_table_data%20%3D%20%5B%5D%0A%20%20%20%20for%20loc%20in%20hq_locations%3A%0A%20%20%20%20%20%20%20%20location_table_data.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20'City'%3A%20loc%5B'city'%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Country'%3A%20loc%5B'country'%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Sector'%3A%20loc%5B'sector'%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Companies'%3A%20'%2C%20'.join(loc%5B'companies'%5D)%0A%20%20%20%20%20%20%20%20%7D)%0A%20%20%20%20df_location_table%20%3D%20pd.DataFrame(location_table_data)%0A%20%20%20%20location_table%20%3D%20mo.ui.table(df_location_table%2C%20label%3D%22Company%20Headquarters%20by%20City%22)%0A%0A%20%20%20%20tab_global%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%20%F0%9F%97%BA%EF%B8%8F%20S%26P%20500%20Company%20Headquarters%20Geography%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22Interactive%20map%20showing%20headquarters%20locations.%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22---%22)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%8A%20Statistics%22)%2C%0A%20%20%20%20%20%20%20%20mo.hstack(%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.vstack(%5Bmo.md(f%22%23%23%23%20%7Btotal_cities%7D%22)%2C%20mo.md(%22Cities%22)%5D)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.vstack(%5Bmo.md(f%22%23%23%23%20%7Bunique_sectors%7D%22)%2C%20mo.md(%22Sectors%22)%5D)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.vstack(%5Bmo.md(f%22%23%23%23%20%7Bunique_countries%7D%22)%2C%20mo.md(%22Countries%22)%5D)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.vstack(%5Bmo.md(f%22%23%23%23%20%7Btotal_companies%7D%22)%2C%20mo.md(%22Companies%22)%5D)%2C%0A%20%20%20%20%20%20%20%20%5D)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%97%BA%EF%B8%8F%20Interactive%20Map%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_map)%2C%0A%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%8B%20Company%20HQ%20Breakdown%22)%2C%0A%20%20%20%20%20%20%20%20location_table%2C%0A%20%20%20%20%5D)%0A%0A%20%20%20%20return%20(tab_global%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20pd%2C%20px%2C%20sector_colors%2C%20sp500_data)%3A%0A%20%20%20%20%23%20Tab%204%3A%20Panel%20Data%20Trends%20(2020-2024)%0A%0A%20%20%20%20years%20%3D%20%5B2020%2C%202021%2C%202022%2C%202023%2C%202024%5D%0A%20%20%20%20panel_data%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20year%20in%20years%3A%0A%20%20%20%20%20%20%20%20for%20company%20in%20sp500_data%5B%3A20%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20year_effect%20%3D%20(year%20-%202022)%20*%200.15%0A%20%20%20%20%20%20%20%20%20%20%20%20panel_data.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'ticker'%3A%20company%5B'ticker'%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'sector'%3A%20company%5B'sector'%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'year'%3A%20year%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'zscore'%3A%20round(company%5B'zscore'%5D%20%2B%20year_effect%2C%202)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'cod'%3A%20round(company%5B'cod'%5D%20-%20year_effect%20*%200.4%2C%202)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20df_panel%20%3D%20pd.DataFrame(panel_data)%0A%0A%20%20%20%20%23%20Cost%20of%20Debt%20trend%20chart%0A%20%20%20%20cost_trend%20%3D%20df_panel.groupby(%5B'sector'%2C%20'year'%5D)%5B'cod'%5D.mean().reset_index()%0A%20%20%20%20fig_trend%20%3D%20px.line(cost_trend%2C%20x%3D'year'%2C%20y%3D'cod'%2C%20color%3D'sector'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20title%3D'Cost%20of%20Debt%20Trends%20(2020-2024)'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%3D%7B'year'%3A%20'Year'%2C%20'cod'%3A%20'Cost%20of%20Debt%20(%25)'%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color_discrete_map%3Dsector_colors)%0A%0A%20%20%20%20%23%20Z-Score%20trend%20chart%0A%20%20%20%20zscore_trend%20%3D%20df_panel.groupby(%5B'sector'%2C%20'year'%5D)%5B'zscore'%5D.mean().reset_index()%0A%20%20%20%20fig_zscore%20%3D%20px.line(zscore_trend%2C%20x%3D'year'%2C%20y%3D'zscore'%2C%20color%3D'sector'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20title%3D'Altman%20Z-Score%20Trends%20(2020-2024)'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%3D%7B'year'%3A%20'Year'%2C%20'zscore'%3A%20'Z-Score'%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color_discrete_map%3Dsector_colors)%0A%20%20%20%20fig_zscore.add_hline(y%3D1.81%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22red%22%2C%20annotation_text%3D%22Distress%22)%0A%20%20%20%20fig_zscore.add_hline(y%3D2.99%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22green%22%2C%20annotation_text%3D%22Safe%22)%0A%0A%20%20%20%20%23%20Correlation%20over%20time%0A%20%20%20%20yearly_corr_list%20%3D%20%5B%5D%0A%20%20%20%20for%20year%20in%20years%3A%0A%20%20%20%20%20%20%20%20year_data%20%3D%20df_panel%5Bdf_panel%5B'year'%5D%20%3D%3D%20year%5D%0A%20%20%20%20%20%20%20%20corr_value%20%3D%20year_data%5B'zscore'%5D.corr(year_data%5B'cod'%5D)%0A%20%20%20%20%20%20%20%20yearly_corr_list.append(%7B'year'%3A%20year%2C%20'correlation'%3A%20corr_value%7D)%0A%0A%20%20%20%20yearly_corr%20%3D%20pd.DataFrame(yearly_corr_list)%0A%20%20%20%20fig_corr%20%3D%20px.bar(yearly_corr%2C%20x%3D'year'%2C%20y%3D'correlation'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20title%3D'Z-Score%20vs%20Cost%20of%20Debt%20Correlation'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%3D%7B'year'%3A%20'Year'%2C%20'correlation'%3A%20'Correlation'%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3D'correlation'%2C%20color_continuous_scale%3D'RdBu_r')%0A%0A%20%20%20%20tab_panel%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%20%F0%9F%93%88%20Panel%20Data%20Analysis%3A%205-Year%20Trends%20(2020-2024)%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22Tracking%20financial%20metrics%20across%20multiple%20years.%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22---%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%8A%20Cost%20of%20Debt%20Over%20Time%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_trend)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%93%88%20Altman%20Z-Score%20Over%20Time%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_zscore)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%94%97%20Correlation%20Analysis%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_corr)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%23%20%F0%9F%92%A1%20Key%20Insights%0A%0A%20%20%20%20%20%20%20%20-%20Cost%20of%20Debt%20increased%20in%202023-2024%20due%20to%20rising%20rates%0A%20%20%20%20%20%20%20%20-%20Z-Scores%20show%20slight%20decline%20across%20sectors%0A%20%20%20%20%20%20%20%20-%20Negative%20correlation%20persists%3A%20Higher%20Z-Score%20%3D%20Lower%20borrowing%20costs%0A%20%20%20%20%20%20%20%20-%20Technology%20sector%20maintains%20strongest%20financial%20health%0A%20%20%20%20%20%20%20%20%22%22%22)%0A%20%20%20%20%5D)%0A%0A%20%20%20%20return%20(tab_panel%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20tab_about%2C%20tab_dashboard%2C%20tab_global%2C%20tab_panel)%3A%0A%20%20%20%20%23%20Cell%205%3A%20Main%20Portfolio%20-%204%20Tabs%0A%0A%20%20%20%20tabs%20%3D%20mo.ui.tabs(%7B%0A%20%20%20%20%20%20%20%20%22%F0%9F%93%84%20About%20Me%22%3A%20tab_about%2C%0A%20%20%20%20%20%20%20%20%22%F0%9F%93%8A%20Z-Score%20Dashboard%22%3A%20tab_dashboard%2C%0A%20%20%20%20%20%20%20%20%22%F0%9F%97%BA%EF%B8%8F%20HQ%20Geography%22%3A%20tab_global%2C%0A%20%20%20%20%20%20%20%20%22%F0%9F%93%88%20Panel%20Data%22%3A%20tab_panel%2C%0A%20%20%20%20%7D)%0A%0A%20%20%20%20final_output%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%20Artur%20Churaba%20-%20Data%20Science%20Portfolio%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Bayes%20Business%20School%20%7C%20BSc%20Accounting%20%26%20Finance%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22---%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22**Welcome%20to%20my%20portfolio!**%20This%20interactive%20dashboard%20demonstrates%20my%20data%20science%20and%20financial%20analysis%20capabilities.%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20What%20You'll%20Find%20Here%3A%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%221.%20**About%20Me**%20-%20Education%20and%20skills%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%222.%20**Z-Score%20Dashboard**%20-%20Risk%20analysis%20with%20filters%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%223.%20**HQ%20Geography**%20-%20Global%20headquarters%20map%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%224.%20**Panel%20Data**%20-%205-year%20trends%20(2020-2024)%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%22)%2C%0A%20%20%20%20%20%20%20%20tabs%2C%0A%20%20%20%20%20%20%20%20mo.md(%22---%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22*This%20portfolio%20demonstrates%20my%20data%20science%20and%20financial%20analysis%20capabilities.*%22)%0A%20%20%20%20%5D)%0A%0A%20%20%20%20final_output%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.23.1",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
